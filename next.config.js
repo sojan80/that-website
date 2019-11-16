@@ -1,5 +1,9 @@
 const webpack = require('webpack');
 
+const withMDX = require('@next/mdx')({
+  extension: /\.(md|mdx)$/,
+});
+
 const nextSourceMaps = require('@zeit/next-source-maps');
 
 const sourceMaps = nextSourceMaps({
@@ -19,11 +23,12 @@ const sourceMaps = nextSourceMaps({
   },
 });
 
-module.exports = {
+module.exports = withMDX({
+  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   env: {
     API_GATEWAY: 'https://us-central1-all-that.cloudfunctions.net/graphGateway',
     WI_PROSPECTUS_URL:
       'https://storage.googleapis.com/that-bucket/2020_THATConference_Prospectus.pdf',
   },
   ...sourceMaps,
-};
+});

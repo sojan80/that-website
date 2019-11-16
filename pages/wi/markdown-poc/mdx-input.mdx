@@ -1,0 +1,47 @@
+import SquareButton from '../../../components/shared/SquareButton'
+import ImportedMarkdownBlah from './markdown-to-be-imported.md'
+import variables from './variables'
+
+### Using MDXjs from an MDX file.
+MDX is a JSX in Markdown loader, parser, and renderer for ambitious projects.
+
+##### note: event date is loaded as a prop sent from parent mdx-text.js file through JSX fragment syntax. works by itself because it renders through HTML
+<span>{props.eventDate}</span> 
+
+##### note: dates are loaded from another JS/config file. works because HTML is wrapping section
+<div>The event date is {variables.eventDate} and the call for speakers is {variables.callForSpeakersDate}!</div> 
+
+##### note: fails to render variable or prop because it evals as MD only
+The event date is <span>{variables.eventDate}</span>! 
+ 
+---------------
+
+<ImportedMarkdownBlah />
+
+---------------
+
+#### Table of Contents
+  
+* Here is some link [GitHub DOT COM](https://www.github.com/)
+* Fun with markdown
+* Yay ZEIT!
+* lipsum blah
+  
+---------------
+
+_below is a SquareButton component directly used in the mdx file_
+<SquareButton />
+
+---------------
+
+##### errrbody
+what?
+  
+#### Tables?
+| *Feature* | *Support* |
+| --------- | ------- |
+| tables    | ✔ |
+| alignment | ✔ |
+| wewt      | ✔ |
+
+
